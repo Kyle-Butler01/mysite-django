@@ -1,30 +1,24 @@
-# Виртуальное окружение
+# .gitignore
+# Вирт. окружения
 venv/
 env/
 .venv/
 
-# База данных SQLite
+# База данных
 db.sqlite3
 
-# Кэш и pyc
+# Питоновский мусор
 __pycache__/
 *.pyc
-*.pyo
-*.pyd
 
-# Логи
-*.log
-
-# Среды разработки
+# IDE
 .idea/
 .vscode/
 
-# env-файлы
+# Секреты
 .env
 *.env
 
-# Медиа
+# Django static/media
 /media/
-
-# Статик, собранный collectstatic
-/staticfiles/
+staticfiles/
