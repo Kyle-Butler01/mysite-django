@@ -1,0 +1,30 @@
+# Виртуальное окружение
+venv/
+env/
+.venv/
+
+# База данных SQLite
+db.sqlite3
+
+# Кэш и pyc
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Логи
+*.log
+
+# Среды разработки
+.idea/
+.vscode/
+
+# env-файлы
+.env
+*.env
+
+# Медиа
+/media/
+
+# Статик, собранный collectstatic
+/staticfiles/
