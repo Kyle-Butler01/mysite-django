@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+
+    {% block title %}
+    Главная страница
+    {% endblock %}
+
+
+    {% block body %}
+    <header>
+        <h1>Добро пожаловать на наш сайт!</h1>
+    </header>
+    <div class="main-container">
+        <h2>Мы рады вас видеть!</h2>
+        <p>Наша команда всегда готова помочь вам и ответить на все вопросы.</p>
+
+
+        <div class="buttons">
+            <div class="top-left-btn">
+                <a href="{% url 'persons' %}" class="btn btn-primary">Пользователи</a>
+            </div>
+                <a href="{% url 'about' %}" class="btn btn-primary">Про нас</a>
+                <a href="{% url 'goods' %}" class="btn btn-primary">Список товаров</a>
+                <a href="{% url 'contact' %}" class="btn btn-secondary">Контакты</a>
+            <div class="top-right-btn">
+                <a href="{% url 'buy_method' %}" class="btn-success">Добавить способ оплаты</a>
+            </div>
+        </div>
+    </div>
+    {% endblock %}
+
+
+

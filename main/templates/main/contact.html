@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+
+    {% block title %}
+    Контакты
+    {% endblock %}
+
+
+    {% block body %}
+    <header>
+        <h1>Свяжитесь с нами</h1>
+    </header>
+
+    <div class="main-container">
+        <h2>Мы всегда рады помочь!</h2>
+        <div class="content">
+            <p>У вас есть вопросы или предложения? Напишите нам, и мы обязательно ответим!</p>
+            <p>Адрес: ул. Примерная, дом 10, Москва</p>
+            <p>Телефон: +7 123 456 7890</p>
+            <p>Email: info@oursite.com</p>
+        </div>
+
+        <div class="buttons">
+            <a href="{% url 'index' %}" class="btn btn-primary">На главную</a>
+            <a href="{% url 'about' %}" class="btn btn-secondary">Про нас</a>
+        </div>
+    </div>
+
+    {% endblock %}
+

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 80px);
+            text-align: center;
+        }
+
+        .main-container h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 15px 25px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .btn-primary {
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9;
+            transform: scale(1.05);
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+            text-decoration: none;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d;
+            transform: scale(1.05);
+        }
+
+
+            .btn-success {
+        padding: 10px 2px;
+        font-size: 10px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-transform: uppercase;
+        background-color: #2ecc71;
+        color: white;
+        transition: background-color 0.3s, transform 0.3s;
+        text-decoration: none;
+    }
+
+    .btn-success:hover {
+        background-color: #27ae60;
+        transform: scale(1.05);
+        text-decoration: none;
+    }
+
+
+        .top-right-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .top-right-btn a {
+            text-decoration: none;
+        }
+
+        .top-left-btn {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .top-left-btn a {
+            text-decoration: none;
+        }
+
+
+
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #2c3e50;
+            color: white;
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    {% block body %}{% endblock %}
+    <footer>
+        <p>&copy; 2025 Все права защищены</p>
+    </footer>
+</body>
+</html>
