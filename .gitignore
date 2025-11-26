@@ -22,3 +22,6 @@ __pycache__/
 # Django static/media
 /media/
 staticfiles/
+
+#Settings of app
+webapp/settings.py
