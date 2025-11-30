@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: webapp
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn webapp.wsgi:application"
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: webapp.settings
