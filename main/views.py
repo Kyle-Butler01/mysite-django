@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Person, Products
+from .models import Person, Products, Card
 from .forms import PersonForm, CardBuyForm
 from django.http import HttpResponse
 
@@ -41,7 +41,7 @@ def delete_person (request, person_id):
         user.delete()
         return redirect('persons')
     else:
-        return HttpResponse (request, '<h1>Удаление доступно только при помощи пост запроса<h1>')
+        return HttpResponse ('<h1>Удаление доступно только при помощи пост запроса<h1>')
 
 
 def redact_person (request):
@@ -73,21 +73,40 @@ def goods (request):
     return render(request, 'main/goods.html', {'products': products})
 
 
-def buy_method (request):
+def add_buy_method (request):
     if request.method == 'POST':
         form = CardBuyForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('index')
         else:
-            return HttpResponse(request, '<h1>При добавлении способа оплаты произошла непредвиденная ошибка<h1>')
+            return HttpResponse('<h1>При добавлении способа оплаты произошла непредвиденная ошибка<h1>')
     else:
         form = CardBuyForm()
         return render(request, 'main/buy_method.html', {'form': form})
 
 
-# def goods_buy (request, id):
-#    num_good = get_object_or_404(Products, id = id)
-#     if request.method == 'POST':
-#        pass
+def goods_buy(request, id):
+    num_good = get_object_or_404(Products, id=id)
+    if request.method == 'POST':
+        form = CardBuyForm(request.POST)
+        if form.is_valid():
+            card_number = form.cleaned_data['card_number']
+            cvv = form.cleaned_data['cvv']
+            card_exists = Card.objects.filter(
+                card_number=card_number,
+                cvv=cvv
+            ).exists()
+            if card_exists:
+                return HttpResponse(
+                    '<h1>Спасибо за заказ! Ваш заказ в обработке, в течении 15 минут с вами свяжутся. Ожидайте!</h1>')
+            else:
+                return HttpResponse('<h1>При обоаботке заказа произошла ошибка!</h1>')
+        else:
+            return HttpResponse('<h1>При заполнении формы произошла ошибка, попробуйте заново<h1>')
+
+    else:
+        form = CardBuyForm()
+        return render(request, 'main/buy.html', {'form': form, 'product': num_good})
+
 

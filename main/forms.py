@@ -10,4 +10,4 @@ class PersonForm (forms.ModelForm):
 class CardBuyForm (forms.ModelForm):
     class Meta:
         model = Card
-        fields = ['card_number', 'CVV']
+        fields = ['card_number', 'cvv']

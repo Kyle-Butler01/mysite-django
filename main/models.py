@@ -21,8 +21,8 @@ class Products (models.Model):
 
 class Card (models.Model):
     id = models.AutoField(primary_key=True)
-    card_number = models.CharField(max_length=20, unique=True)
-    CVV = models.CharField(max_length =3, unique=True)
+    card_number = models.CharField(max_length=16)
+    cvv = models.CharField(max_length=3)
 
     def __str__(self):
         return self.card_number

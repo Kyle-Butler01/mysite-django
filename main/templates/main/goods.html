@@ -160,7 +160,7 @@
                     <tr>
                         <td>{{ product.name }}</td>
                         <td>{{ product.category }}</td>
-                        <td><a href="" class="btn-success">Купить</a></td>
+                        <td><a href="{% url 'buy' product.id %}" class="btn-success">Купить</a></td>
                     </tr>
                     {% empty %}
                     <tr>

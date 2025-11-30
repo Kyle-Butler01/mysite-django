@@ -12,6 +12,6 @@ urlpatterns = [
     path('edit_person/<int:id>/', views.edit_person, name='edit'),
     path('edit_person/<int:id>',views.refactor_person, name='edit_person'),
     path('goods/', views.goods, name='goods'),
-    #path('goods/<int:product_id>', )
-    path('buy_method/', views.buy_method, name='buy_method')
+    path('goods/<int:id>', views.goods_buy, name='buy'),
+    path('buy_method/', views.add_buy_method, name='buy_method')
 ]
