@@ -23,5 +23,4 @@ __pycache__/
 /media/
 staticfiles/
 
-#Settings of app
-webapp/settings.py
+
