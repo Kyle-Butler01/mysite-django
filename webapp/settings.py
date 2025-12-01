@@ -83,10 +83,7 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default='postgresql://mydb_eovg_user:DZG5gr4at7Ec2zQdrozwgzNsEZ34vQ2w@dpg-d4maj4ali9vc73en6ppg-a/mydb_eovg',
-        conn_max_age=600
-    )
+    'default': dj_database_url.config(conn_max_age=600)
 }
 
 # Password validation
