@@ -83,7 +83,10 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 
 
 DATABASES = {
-    'default': dj_database_url.config(conn_max_age=600)
+    'default': dj_database_url.config(
+        default='sqlite:///db.sqlite3',  # локальная база для разработки
+        conn_max_age=600
+    )
 }
 
 # Password validation
