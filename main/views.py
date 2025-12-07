@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Person, Products, Card
-from .forms import PersonForm, CardBuyForm
+from .forms import PersonForm, CardBuyForm, RegisterForm
 from django.http import HttpResponse
-
+from django.contrib.auth import login, logout
 
 def index (request):
     return render(request, 'main/index.html')
@@ -110,3 +110,20 @@ def goods_buy(request, id):
         return render(request, 'main/buy.html', {'form': form, 'product': num_good})
 
 
+def register (request):
+    if request.method == 'POST':
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect ('index')
+        else:
+            return HttpResponse ('<h1>Что-то не так заполните форму еще раз и повторите попытку</h1>')
+    else:
+        form = RegisterForm()
+
+        return render (request, 'main/register.html', {'form': form})
+    
+            
+
+    

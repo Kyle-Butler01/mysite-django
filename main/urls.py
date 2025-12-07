@@ -13,5 +13,5 @@ urlpatterns = [
     path('edit_person/<int:id>',views.refactor_person, name='edit_person'),
     path('goods/', views.goods, name='goods'),
     path('goods/<int:id>', views.goods_buy, name='buy'),
-    path('buy_method/', views.add_buy_method, name='buy_method')
+    path('buy_method/', views.add_buy_method, name='buy_method'),
 ]
