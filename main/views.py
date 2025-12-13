@@ -3,6 +3,7 @@ from .models import Person, Products, Card
 from .forms import PersonForm, CardBuyForm, RegisterForm
 from django.http import HttpResponse
 from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 
 def index (request):
     return render(request, 'main/index.html')
@@ -85,7 +86,7 @@ def add_buy_method (request):
         form = CardBuyForm()
         return render(request, 'main/buy_method.html', {'form': form})
 
-
+@login_required()
 def goods_buy(request, id):
     num_good = get_object_or_404(Products, id=id)
     if request.method == 'POST':
