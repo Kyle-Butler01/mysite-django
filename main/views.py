@@ -16,7 +16,7 @@ def about(request):
 def contact(request):
     return render(request, 'main/contact.html')
 
-
+@login_required()
 def show_persons (request):
     persons = Person.objects.all()
     return render(request, 'main/persons.html', {'persons' : persons})
