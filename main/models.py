@@ -26,3 +26,13 @@ class Card (models.Model):
 
     def __str__(self):
         return self.card_number
+
+
+class Seller (models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=30)
+    unique_pass = models.CharField(max_length=20)
+    login_name = models.CharField(max_length=30)
+
+    def __int__ (self):
+        return self.id

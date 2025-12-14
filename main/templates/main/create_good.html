@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+Публикация продукта в магазин
+{% endblock %}
+
+
+{% block body %}
+<div class="main-container">
+    <h2>Опишите продукт который хотите опубликовать</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Отправить запрос на создание</button>
+    </form>>
+</div>
+{% endblock %}

@@ -1,6 +1,9 @@
+from itertools import product
+from unicodedata import category
+
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Person, Products, Card
-from .forms import PersonForm, CardBuyForm, RegisterForm
+from .models import Person, Products, Card, Seller
+from .forms import PersonForm, CardBuyForm, RegisterForm, SellerForm, FormCreateProduct
 from django.http import HttpResponse
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
@@ -124,7 +127,61 @@ def register (request):
         form = RegisterForm()
 
         return render (request, 'main/register.html', {'form': form})
-    
-            
+
+
+def seller_log (request):
+    if request.method == 'POST':
+        form = SellerForm(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            unique_pass = form.cleaned_data['unique_pass']
+            login_name = form.cleaned_data['login_name']
+
+            seller_exist = Seller.objects.filter(
+                name=name,
+                unique_pass = unique_pass,
+                login_name=login_name,
+            ).exists()
+
+            if seller_exist:
+                products = Products.objects.all()
+                return redirect('seller_page')
+            else:
+                return HttpResponse ('<h2>Кажется такого пользователя не существует, повторите попытку позже</h2>')
+
+        else:
+            return HttpResponse ('<h2><При заполнении формы произошла ошибка, пожалуйста заполните форму правильно и повторите попытку/h2>')
+
+    else:
+        form = SellerForm()
+        return render(request, 'main/seller_log.html', {'form': form})
+
+
+def create_goods (request):
+    if request.method == 'POST':
+        form = FormCreateProduct(request.POST)
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            category = form.cleaned_data['category']
+            product_exist = Products.objects.filter(
+                name=name,
+                category=category
+            ).exists()
+
+            if product_exist:
+                return HttpResponse ('<h2>Добавляемый вами продукт уже находится в магазине, пожалуйста, попробуйте что-то другое</h2>')
+            else:
+                form.save()
+                return redirect('seller_page')
+        else:
+            return HttpResponse ('<h2>При заполнении формы произошла ошибка, проверьте правильность данных и попробуйте еще раз</h2>')
+    else:
+        form = FormCreateProduct()
+        return render(request, 'main/create_good.html', {'form':form})
+
+
+def seller_page (request):
+    products = Products.objects.all()
+    return render(request, 'main/goods_seller.html', {'products': products})
 
     

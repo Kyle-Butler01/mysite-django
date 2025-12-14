@@ -1,0 +1,18 @@
+{% extends 'main/base.html' %}
+
+
+{% block title %}
+Авторизация продавца магазина
+{% endblock %}
+
+
+{% block body %}
+<div class="main-container">
+    <h2>Авторизуйтесь под продавца</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+    <button type="submit">Отправить</button>
+    </form>
+</div>
+{% endblock %}
